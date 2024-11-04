@@ -16,7 +16,7 @@ body {
     justify-content: space-between;
     padding: 10px 20px;
     background-color: black;
-    position: fixed;
+    /* position: fixed; */
     width: 100%;
     top: 0;
     left: 0;
@@ -78,6 +78,7 @@ body {
 }
 
 .home {
+    /* margin-top: 50px; */
     position: relative;
     width: 100%;
     height: 100vh;
@@ -353,33 +354,28 @@ section {
 }
 
 .progress-line.html span {
-    width: 90%;
+    width: 80%;
     animation-delay: 0.2s; 
-    data-percentage: "90%";
 }
 
 .progress-line.css span {
-    width: 75%;
+    width: 55%;
     animation-delay: 0.4s;
-    data-percentage: "75%";
 }
 
 .progress-line.javascript span {
-    width: 70%;
+    width: 30%;
     animation-delay: 0.6s;
-    data-percentage: "70%";
 }
 
 .progress-line.python span {
-    width: 80%;
+    width: 50%;
     animation-delay: 0.8s;
-    data-percentage: "80%";
 }
 
 .progress-line.react span {
-    width: 65%;
+    width: 15%;
     animation-delay: 1s;
-    data-percentage: "65%";
 }
 
 
@@ -401,35 +397,23 @@ section {
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    background-color: #333;
+    background: conic-gradient(
+        #0ef var(--percentage),
+        #333 var(--percentage)
+    );
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
+    transform: rotate(360deg);
+    animation: fillAnimation 3s ease-in-out forwards;
 }
-
-.mask,
-.fill {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    border-radius: 50%;
-}
-
-.mask {
-    clip: rect(0px, 120px, 120px, 60px);
-}
-
-.fill {
-    clip: rect(0px, 60px, 120px, 0px);
-    background-color: #0ef;
-    transform: rotate(0deg);
-    animation: fillCircle 2s ease-in-out forwards;
-}
-
-@keyframes fillCircle {
+@keyframes fillAnimation {
     from {
         transform: rotate(0deg);
     }
     to {
-        transform: rotate(180deg);
+        transform: rotate(var(360deg));
     }
 }
 
@@ -447,93 +431,113 @@ section {
     font-weight: 700;
 }
 
-.radial-bar .text {
+.text {
     margin-top: 10px;
     font-size: 18px;
 }
-.contact{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    align-items: center;
-    gap: 3rem;
-    padding-left: 30px;
-    margin-top: 130px;
-}
-.contact-text{
-        text-align: left;
-}
-.contact-text h2{
-    font-size: 70px;
-    line-height: 1;
+
+
+.cert{
+    margin-top: 100px;
+    font-size: 50px;
     text-align: center;
 }
-.contact-text h2 span{
+.cert span{
     color: #0ef;
 }
-.contact-text h4{
-    margin: 15px 0;
-    font-size: 23px;
-    font-weight: 600;
+.container {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
 }
-.contact-text p{
-    color: rgb(177, 177, 177);
-    font-size: 20px;
-    line-height: 30px;
-    margin-bottom: 2rem;
+.photo-card {
+    width: 30%;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
 }
-.contact-list{
-    margin-bottom: 3rem;
-
-}
-.contact-list li{
-    margin-bottom: 10px;
-    display: block;
-}
-.contact-list i{
-    display: inline-block;
-    color: #0ef;
-    font-size: 20px;
-    font-weight: 600;
-    transition: all .40s ease;
-}
-.contact-list li a:hover{
-    transform: scale(1.01) translateY(-5px);
-    color: #0ef;
-}
-.contact-form form{
-    position: relative;
-    
-}
-.contact-form form input, form textarea{
-    border: none;
-    outline: none;
+.photo-card img {
     width: 100%;
-    padding: 18px;
-    background-: #555557;
-    color: #000;
-    font-size: 1rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    border-radius: 0.5rem;
+    height: auto;
+    border-radius: 8px;
 }
-.contact-form textarea{
-    resize: none;
-    height: 220px;
-}
-.contact-form form .send{
-    display: inline-block;
-    padding: 12px 28px;
-    text-decoration: none;
+.photo-heading {
     font-size: 18px;
-    background: #0ef;
-    color: black;
-    font-weight: 600;
-    border-radius: 50px;
-    animation: slideTop 1s ease forwards;
+    font-weight: bold;
+    margin-top: 10px;
 }
-.contact-form form .send:hover {
-    box-shadow: 0 0 20px #0ef;
+.photo-details {
+    margin-top: 5px;
+    font-size: 14px;
+    color: #333;
 }
+.contact {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding: 20px;
+    margin: 20px;
+}
+.contact h2{
+    font-size: 65px;
+}
+.contact h2 span{
+    color: #0ef;
+}
+.contact h4{
+    font-size: 30px;
+    padding: 5px;
+}
+.contact-text {
+    max-width: 400px; /* Adjust as necessary */
+}
+
+.contact-list {
+    list-style: none;
+    padding: 0;
+}
+
+.contact-list li {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+.contact-form {
+    max-width: 500px; /* Adjust as necessary */
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.contact-form .send {
+    background-color: #1fc3c9; /* Change as needed */
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.contact-form .send:hover {
+    background-color: #17a2b8; /* Change as needed */
+}
+
+.footer {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px 0;
+    background-color: #f4f4f4; /* Change as needed */
+}
+
 
 
 @media (max-width: 1024px) {
